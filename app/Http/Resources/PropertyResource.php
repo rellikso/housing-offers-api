@@ -20,7 +20,12 @@ class PropertyResource extends JsonResource
                 'check_in' => $this->offer_check_in,
                 'check_out' => $this->offer_check_out,
                 'max_guests' => $this->offer_max_guests,
-                'price' => $this->offer_price,
+                'price' => number_format(
+                    (float) $this->offer_price,
+                    2,
+                    '.',
+                    '',
+                ),
                 'currency' => $this->offer_currency,
                 'available_units' => $this->offer_available_units,
                 'expires_at' => $this->offer_expires_at,

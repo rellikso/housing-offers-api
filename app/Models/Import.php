@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Enums\ImportStatus;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Import extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'supplier_id',
         'external_import_id',
