@@ -10,7 +10,7 @@ use OpenApi\Attributes as OA;
     description: 'REST API for importing, searching and reserving housing offers.',
 )]
 #[OA\Server(
-    url: 'https://housing-offers-api.local',
+    url: '/',
     description: 'Local environment',
 )]
 class OpenApi
