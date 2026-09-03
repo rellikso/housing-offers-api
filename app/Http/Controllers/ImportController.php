@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Enums\ImportStatus;
 use App\Http\Requests\StoreImportRequest;
+use App\Http\Resources\ImportResource;
 use App\Models\Import;
 use App\Models\Supplier;
 use App\Jobs\ProcessImport;
@@ -50,5 +51,12 @@ class ImportController extends Controller
                 'status' => $import->status->value,
             ],
         ], 202);
+    }
+
+    public function show(Import $import): ImportResource
+    {
+        $import->load('supplier');
+
+        return new ImportResource($import);
     }
 }

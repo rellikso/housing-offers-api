@@ -155,6 +155,93 @@ use OpenApi\Attributes as OA;
         ),
     ],
 )]
+#[OA\Get(
+    path: '/api/imports/{import}',
+    operationId: 'getImport',
+    summary: 'Get import status',
+    tags: ['Imports'],
+    parameters: [
+        new OA\Parameter(
+            name: 'import',
+            description: 'Import ID',
+            in: 'path',
+            required: true,
+            schema: new OA\Schema(type: 'integer'),
+            example: 1,
+        ),
+    ],
+    responses: [
+        new OA\Response(
+            response: 200,
+            description: 'Import status',
+            content: new OA\JsonContent(
+                properties: [
+                    new OA\Property(
+                        property: 'data',
+                        type: 'object',
+                        properties: [
+                            new OA\Property(
+                                property: 'id',
+                                type: 'integer',
+                                example: 1,
+                            ),
+                            new OA\Property(
+                                property: 'supplier',
+                                type: 'string',
+                                example: 'supplier-a',
+                            ),
+                            new OA\Property(
+                                property: 'external_import_id',
+                                type: 'string',
+                                example: 'import-12345',
+                            ),
+                            new OA\Property(
+                                property: 'sent_at',
+                                type: 'string',
+                                format: 'date-time',
+                            ),
+                            new OA\Property(
+                                property: 'status',
+                                type: 'string',
+                                example: 'completed',
+                            ),
+                            new OA\Property(
+                                property: 'total_offers',
+                                type: 'integer',
+                                example: 3,
+                            ),
+                            new OA\Property(
+                                property: 'processed_offers',
+                                type: 'integer',
+                                example: 3,
+                            ),
+                            new OA\Property(
+                                property: 'error',
+                                type: 'string',
+                                nullable: true,
+                            ),
+                            new OA\Property(
+                                property: 'created_at',
+                                type: 'string',
+                                format: 'date-time',
+                            ),
+                            new OA\Property(
+                                property: 'completed_at',
+                                type: 'string',
+                                format: 'date-time',
+                                nullable: true,
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        ),
+        new OA\Response(
+            response: 404,
+            description: 'Import not found',
+        ),
+    ],
+)]
 class Imports
 {
 }
